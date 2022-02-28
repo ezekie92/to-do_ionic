@@ -36,11 +36,13 @@ export class Tab1Page {
           text: 'Create',
           handler: (data) => {
             console.log(data);
-            if (data.title.length > 0) {
-              this.tasksService.createList(data.title);
-            } else {
+            if (data.title.length === 0) {
               return;
             }
+
+            const listId = this.tasksService.createList(data.title);
+
+            this.router.navigateByUrl(`/tabs/tab1/add-list/${listId}`);
           }
         }
       ]

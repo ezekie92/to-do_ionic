@@ -18,6 +18,14 @@ export class TasksService {
     const newList = new List(title);
     this.lists.push(newList);
     this.saveStorage();
+
+    return newList.id;
+  }
+
+  getList( id: string | number) {
+    id = Number(id);
+
+    return this.lists.find(data => data.id === id);
   }
 
   saveStorage() {
