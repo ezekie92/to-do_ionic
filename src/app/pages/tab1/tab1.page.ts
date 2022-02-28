@@ -47,7 +47,6 @@ export class Tab1Page {
     });
 
     alert.present();
-    // this.router.navigateByUrl('tabs/tab1/add-list');
   }
 
 }

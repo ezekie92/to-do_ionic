@@ -9,11 +9,7 @@ export class TasksService {
   lists: List[] = [];
 
   constructor() {
-
-    const list1 = new List('Amazon wishlist');
-    const list2 = new List('Aliexpress wishlist');
-
-    this.lists.push(list1, list2);
+    this.loadStorage();
 
     console.log(this.lists);
   }
@@ -21,5 +17,19 @@ export class TasksService {
   createList(title: string) {
     const newList = new List(title);
     this.lists.push(newList);
+    this.saveStorage();
   }
+
+  saveStorage() {
+    localStorage.setItem('data', JSON.stringify(this.lists));
+  }
+
+  loadStorage() {
+    if (localStorage.getItem('data') != null) {
+      this.lists = JSON.parse(localStorage.getItem('data'));
+    } else {
+      this.lists = [];
+    }
+  }
+
 }
